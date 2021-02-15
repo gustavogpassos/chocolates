@@ -1,0 +1,57 @@
+database chocolate
+
+table adm_product
+    id
+    name
+    weight
+
+table adm_stock
+    id
+    month
+    year
+    product_id
+    qtd_previous_month
+    qtd_in
+    qtd_out
+    qtd_actual
+
+table adm_client
+    id
+    name
+    cpf
+    contact
+    address
+    obs
+
+table buy_order
+    id
+    amount
+    payment_method
+    payment_condition
+    order_date
+
+table buy_order_item
+    id
+    buy_order_id
+    product_id
+    un_value
+    quantity
+    total_value
+
+table sell_order
+    id
+    client_id
+    amount
+    order_date
+    payment_method
+    payment_condition
+
+table sell_order_item
+    id
+    sell_order_id
+    product_id
+    quantity
+    un_value
+    discount
+    total_value
+    net_value
