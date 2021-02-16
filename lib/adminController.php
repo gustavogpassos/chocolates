@@ -4,7 +4,7 @@
  * Description of controlador
  *
  */
-class AplicacaoAdmin {
+class AdminController {
 
     function __construct() {
 

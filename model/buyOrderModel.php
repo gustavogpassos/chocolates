@@ -1,7 +1,7 @@
 <?php
 
 
-class buyOrderModel extends Connection
+class BuyOrderModel extends Connection
 {
     private $stock;
     public function __construct()
@@ -10,6 +10,10 @@ class buyOrderModel extends Connection
         $this->stock = new StockModel();
     }
 
+    /**
+     * @return array
+     * function returns a list fo all buy orders
+     */
     public function index()
     {
         $select = "select * from buy_order";
@@ -17,6 +21,13 @@ class buyOrderModel extends Connection
         return $query->fetchAll();
     }
 
+    /**
+     * @param $data
+     * @return bool
+     *
+     * funcção que insere uma nova ordem de compra
+     * recebe as informações da ordem e dos itens da ordem
+     */
     public function newBuyOrder($data)
     {
         $insertOrder = 'insert into buy_order (amount,payment_method, payment_condition) values (:amount,:payment_method,:payment_condition)';
