@@ -1,6 +1,6 @@
 <?php
 
-require_once 'stockModel.php';
+require_once SERVER_ROOT . 'lib/connection.php';
 
 class SellOrderModel extends Connection
 {
@@ -8,7 +8,6 @@ class SellOrderModel extends Connection
     public function __construct()
     {
         parent::__construct();
-        $stock = new StockModel();
     }
 
     public function index()

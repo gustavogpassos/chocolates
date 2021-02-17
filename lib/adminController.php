@@ -17,7 +17,7 @@ class AdminController {
             else
                 $acao = $_GET['acao'];
 
-            $arq = '../controller/' . $ctrNome . '.php';
+            $arq = './controller/' . $ctrNome . '.php';
 
             if (file_exists($arq)) {
                 require $arq;
@@ -29,10 +29,10 @@ class AdminController {
                     $controlador->index();
                 }
             } else {
-                $_SESSION['dialogMessage'] = "Controlador nao encontrado! <br/>"
-                        . "Você será redirecionado para a home.";
-                $_SESSION['dialogRedirect'] = "index.php";
-                include_once '../resources/componentes/dialog.php';
+                echo "<script>
+                            window.alert('Caminho não encontrado');
+                            window.location.href = \"index.php\";
+                        </script>";
             }
         } else {
             echo '<h1>Bem vindo!</h1>';

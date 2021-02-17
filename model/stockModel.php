@@ -1,5 +1,6 @@
 <?php
 
+require_once SERVER_ROOT . 'lib/connection.php';
 
 class StockModel extends Connection
 {

@@ -1,5 +1,7 @@
 <?php
 
+require_once SERVER_ROOT . 'lib/connection.php';
+
 class ProductModel extends Connection
 {
     public function __construct()

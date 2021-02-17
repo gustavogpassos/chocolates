@@ -1,0 +1,8 @@
+body{
+    all: unset;
+}
+
+section {
+    margin: auto;
+    padding: 10px;
+}

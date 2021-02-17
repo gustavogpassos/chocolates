@@ -8,5 +8,5 @@ define('DB_PASS', '');
 
 
 //caminho root do server
-$path = $_SERVER['DOCUMENT_ROOT'] . '/chocolate/';
+$path = $_SERVER['DOCUMENT_ROOT'] . '/chocolates/';
 define('SERVER_ROOT', $path);

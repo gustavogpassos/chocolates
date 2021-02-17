@@ -1,13 +1,13 @@
 <?php
 
+require_once SERVER_ROOT . 'lib/connection.php';
 
 class BuyOrderModel extends Connection
 {
-    private $stock;
+
     public function __construct()
     {
         parent::__construct();
-        $this->stock = new StockModel();
     }
 
     /**
@@ -28,7 +28,7 @@ class BuyOrderModel extends Connection
      * funcção que insere uma nova ordem de compra
      * recebe as informações da ordem e dos itens da ordem
      */
-    public function newBuyOrder($data)
+    public function storeBuyOrder($data)
     {
         $insertOrder = 'insert into buy_order (amount,payment_method, payment_condition) values (:amount,:payment_method,:payment_condition)';
 
@@ -78,14 +78,12 @@ class BuyOrderModel extends Connection
             ));
             if ($query) {
                 $counter++;
-                $r = $this->stock->updateStock($item['product_id'], $item['quantity'], 'o');
-                if(!$r){return false;}
             }else{
                 return false;
             }
         }
         if(count($items) == $counter){
-            return true;
+            return $buyOrderId;
         }
     }
 

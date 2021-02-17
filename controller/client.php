@@ -1,29 +1,29 @@
 <?php
 
-require SERVER_ROOT . 'model/productModel.php';
+require SERVER_ROOT . 'model/clientModel.php';
 
-class Product
+class Client
 {
-    private $productModel;
+    private $clientModel;
 
     public function __construct()
     {
-        $this->productModel = new ProductModel();
+        $this->clientModel = new ClientModel();
     }
 
     public function index(){
-        $data = $this->productModel->index();
-        require SERVER_ROOT . 'view/product/index.php';
+        $data = $this->clientModel->index();
+        require SERVER_ROOT . 'view/client/index.php';
     }
 
     /**
      * @return boolean
      * função que chama o formulario para cadastrar um novo produto
      */
-    public function newProduct()
+    public function newClient()
     {
-        $action = 'index.php?ctrl=product&action=store';
-        require SERVER_ROOT . 'view/product/form.php';
+        $action = 'index.php?ctrl=client&action=store';
+        require SERVER_ROOT . 'view/client/form.php';
     }
 
     /**
@@ -32,7 +32,7 @@ class Product
     public function store(){
         $data = $_POST;
         try{
-            $this->productModel->newProduct($data);
+            $this->clientModel->newclient($data);
             print_r("produto cadastrado");
             $this->index();
         }catch (ErrorException $e){
@@ -47,7 +47,7 @@ class Product
         $data = $_POST;
 
         try {
-            $this->productModel->updateProduct($data);
+            $this->clientModel->updateclient($data);
             print_r("produto atualizado");
             $this->index();
         }catch (Exception $e) {
@@ -63,7 +63,7 @@ class Product
     public function search(){
         $search = $_POST;
 
-        $result = $this->productModel->searchProduct($search);
+        $result = $this->clientModel->searchClient($search);
         if(is_bool($result)){
             echo "Nenhum resultado";
         }else{
@@ -71,11 +71,14 @@ class Product
         }
     }
 
+    /**
+     * função que busca um cliente e inclui o formulario para edição dos dados
+     */
     public function get(){
         $data = $_POST;
-        $action = 'index.php?ctrl=product&action=update';
-        $product = $this->productModel->getProduct($data);
-        require SERVER_ROOT . 'view/product/form.php';
+        $action = 'index.php?ctrl=client&action=update';
+        $client = $this->clientModel->getClient($data);
+        require SERVER_ROOT . 'view/client/form.php';
     }
 
 }

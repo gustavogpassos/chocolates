@@ -1,5 +1,6 @@
 <?php
 
+require_once SERVER_ROOT . 'lib/connection.php';
 
 class ClientModel extends Connection
 {
@@ -47,9 +48,45 @@ class ClientModel extends Connection
         $query->execute(array('search'=>$search));
 
         if(is_bool($query)){
-            return false;
+            return $query->errorInfo();
         }else{
             return $query->fetchAll();
         }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     *
+     * função para buscar um cliente pelo id, geralmente usada para atualizar o cadastro
+     */
+    public function getClient($id){
+        $select = "select * from adm_client where id=:id";
+
+        $query = $this->db->prepare($select);
+        $query->execute(array('id'=>$id));
+
+        if(is_bool($query)){
+            return $query->errorInfo();
+        }else{
+            return $query->fetch();
+        }
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     *
+     * função para atualizar alguns dados do cliente
+     * não altera o cpf nem o nome
+     */
+    public function updateClient($data){
+        $update = "update adm_client set 
+                      contact=:contact,
+                      address=:address,
+                      obs=:obs
+                      where id=:id";
+        $query = $this->db->prepare($update);
+        return $query->execute($data);
     }
 }
