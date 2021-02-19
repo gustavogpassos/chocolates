@@ -12,10 +12,10 @@ class AdminController {
 
             $ctrNome = $_GET['ctrl'];
 
-            if (!isset($_GET['acao']))
+            if (!isset($_GET['action']))
                 $acao = 'index';
             else
-                $acao = $_GET['acao'];
+                $acao = $_GET['action'];
 
             $arq = './controller/' . $ctrNome . '.php';
 

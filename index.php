@@ -10,9 +10,17 @@ require SERVER_ROOT . 'lib/adminController.php';
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="./resources/css/custom.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css"/>
+
     <script src="./resources/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 
     <title>Controle de compra e venda</title>
 </head>
@@ -71,6 +79,27 @@ require SERVER_ROOT . 'lib/adminController.php';
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+       $('#table').DataTable({
+           "language": {
+               "lengthMenu": "",
+               "zeroRecords": "Nenhum resultado encontrado.",
+               "info": "",
+               "infoEmpty": "",
+               "infoFiltered": "",
+               "search": "Pesquisar",
+               "paginate": {
+                   "first": "Primeiro",
+                   "last": "Ultimo",
+                   "next": "Próximo",
+                   "previous": "Anterior"
+               }
+           }
+       });
+    });
+</script>
 
 </body>
 </html>
