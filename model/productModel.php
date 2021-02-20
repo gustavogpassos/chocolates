@@ -29,7 +29,7 @@ class ProductModel extends Connection
      *
      * funcção para cadastro de um novo produto, recebe um array com os dados
      */
-    public function newProduct($data){
+    public function storeProduct($data){
         $insert = "insert into adm_product(sku, name, weight) values (:sku, :name, :weight)";
         $query = $this->db->prepare($insert);
         return $query->execute($data);
@@ -59,10 +59,11 @@ class ProductModel extends Connection
      *
      * função para buscar produto pelo código
      */
-    public function getProduct($id){
+    public function getProduct($sku){
+        print_r($sku);
         $select = "select * from adm_product where sku=:sku";
         $query = $this->db->prepare($select);
-        $query->execute(array('id'=>$id));
+        $query->execute(array('sku'=>$sku));
         if(is_bool($query)){
             return $query->errorInfo();
         }else{

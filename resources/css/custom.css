@@ -6,3 +6,8 @@ section {
     margin: auto;
     padding: 10px;
 }
+
+.page-title {
+    margin-bottom: 30px !important;
+    padding-bottom: 10px;
+}

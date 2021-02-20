@@ -13,9 +13,9 @@ require SERVER_ROOT . 'lib/adminController.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./resources/css/custom.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css"/>
+    <link rel="stylesheet" href="./resources/css/custom.css">
 
     <script src="./resources/js/bootstrap.min.js"></script>
 

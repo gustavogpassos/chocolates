@@ -32,7 +32,7 @@ class Product
     public function store(){
         $data = $_POST;
         try{
-            $this->productModel->newProduct($data);
+            $this->productModel->storeProduct($data);
             print_r("produto cadastrado");
             $this->index();
         }catch (ErrorException $e){
@@ -44,7 +44,7 @@ class Product
      * função para atualizar os dados de um produto
      */
     public function update(){
-        $data = $_POST;
+        $data = $_GET;
 
         try {
             $this->productModel->updateProduct($data);
@@ -72,9 +72,9 @@ class Product
     }
 
     public function get(){
-        $data = $_POST;
+        $sku = $_GET['sku'];
         $action = 'index.php?ctrl=product&action=update';
-        $product = $this->productModel->getProduct($data);
+        $data = $this->productModel->getProduct($sku);
         require SERVER_ROOT . 'view/product/form.php';
     }
 
