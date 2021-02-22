@@ -45,10 +45,10 @@ class Client
      */
     public function update(){
         $data = $_POST;
-
+        print_r($data);
         try {
             $this->clientModel->updateclient($data);
-            print_r("produto atualizado");
+            print_r("cliente atualizado");
             $this->index();
         }catch (Exception $e) {
             print_r($e);
@@ -75,9 +75,9 @@ class Client
      * função que busca um cliente e inclui o formulario para edição dos dados
      */
     public function get(){
-        $data = $_POST;
+        $cpf = $_GET['cpf'];
         $action = 'index.php?ctrl=client&action=update';
-        $client = $this->clientModel->getClient($data);
+        $data = $this->clientModel->getClient($cpf);
         require SERVER_ROOT . 'view/client/form.php';
     }
 

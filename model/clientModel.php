@@ -30,7 +30,8 @@ class ClientModel extends Connection
      * funcção para cadastro de um novo cliente
      */
     public function newClient($data){
-        $insert = 'insert into adm_client (name,cpf,contact) values(:name,:cpf,:contact)';
+        $insert = 'insert into adm_client (name,cpf,contact, address, obs) 
+                        values(:name, :cpf, :contact, :address, :obs)';
         $query = $this->db->prepare($insert);
         return $query->execute($data);
     }
@@ -60,11 +61,11 @@ class ClientModel extends Connection
      *
      * função para buscar um cliente pelo id, geralmente usada para atualizar o cadastro
      */
-    public function getClient($id){
-        $select = "select * from adm_client where id=:id";
+    public function getClient($cpf){
+        $select = "select * from adm_client where cpf=:cpf";
 
         $query = $this->db->prepare($select);
-        $query->execute(array('id'=>$id));
+        $query->execute(array('cpf'=>$cpf));
 
         if(is_bool($query)){
             return $query->errorInfo();
@@ -82,10 +83,11 @@ class ClientModel extends Connection
      */
     public function updateClient($data){
         $update = "update adm_client set 
+                      name=:name,
                       contact=:contact,
                       address=:address,
                       obs=:obs
-                      where id=:id";
+                      where cpf=:cpf";
         $query = $this->db->prepare($update);
         return $query->execute($data);
     }

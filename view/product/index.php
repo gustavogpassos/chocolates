@@ -15,9 +15,8 @@
                 <tr>
                     <th>SKU</th>
                     <th>Nome</th>
-                    <th>Peso</th>
+                    <th>Peso (g)</th>
                     <th>Editar</th>
-                    <th>Excluir</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,12 +32,6 @@
                                 <a href="index.php?ctrl=product&action=get&sku=<?= $item['sku'] ?>" aria-label="Editar"
                                    alt="Editar">
                                     <i class="bi-pencil-square"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="index.php?ctrl=product&action=delete&id=<?= $item['sku'] ?>"
-                                   aria-label="Excluir">
-                                    <i class="bi-x-square"></i>
                                 </a>
                             </td>
                         </tr>

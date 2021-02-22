@@ -87,4 +87,9 @@ class BuyOrderModel extends Connection
         }
     }
 
+    public function getBuyOrder($id){
+        $select = 'select 
+                        ';
+    }
+
 }

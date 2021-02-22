@@ -26,7 +26,7 @@ class BuyOrder
     public function newBuyOrder()
     {
         $action = "index.php?ctrl=buyOrder&action=store";
-        require SERVER_ROOT . 'view/buyOrder/newOrder.php';
+        require SERVER_ROOT . 'view/buyOrder/form.php';
     }
 
     public function store()
@@ -49,6 +49,13 @@ class BuyOrder
             echo "<script>window.alert('Não foi incluído o pedido');</script>";
             $this->index();
         }
+    }
+
+    public function getOder(){
+        $id = $_GET['id'];
+        $data = $this->buyOrderModel->getBuyOrder($id);
+        $readonly = 'readonly';
+        require 'view/buyOrder/form.php';
     }
 
     public function deleteOrder()

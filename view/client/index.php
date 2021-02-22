@@ -17,7 +17,6 @@
                     <th>Nome</th>
                     <th>Contato</th>
                     <th>Editar</th>
-                    <th>Excluir</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,15 +29,9 @@
                             <td><?= $item['name'] ?></td>
                             <td><?= $item['contact'] ?></td>
                             <td>
-                                <a href="index.php?ctrl=client&action=get&sku=<?= $item['cpf'] ?>" aria-label="Editar"
+                                <a href="index.php?ctrl=client&action=get&cpf=<?= $item['cpf'] ?>" aria-label="Editar"
                                    alt="Editar">
                                     <i class="bi-pencil-square"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="index.php?ctrl=client&action=delete&id=<?= $item['cpf'] ?>"
-                                   aria-label="Excluir">
-                                    <i class="bi-x-square"></i>
                                 </a>
                             </td>
                         </tr>
