@@ -5,7 +5,7 @@
 <div class="col col-12">
     <div class="col col-12" style="margin-bottom: 10px">
         <a href="index.php" class="btn btn-outline-info"><i class="bi bi-chevron-left"></i> Voltar</a>
-        <a href="index.php?ctrl=byuOrder&action=newBuyOrder" class="btn btn-success"><i class="bi-plus-circle"></i>
+        <a href="index.php?ctrl=buyOrder&action=newBuyOrder" class="btn btn-success"><i class="bi-plus-circle"></i>
             Novo</a>
     </div>
     <section>
@@ -15,6 +15,7 @@
                 <tr>
                     <th>Nº</th>
                     <th>Valor</th>
+                    <th>Data</th>
                     <th>Ver detalhes</th>
                 </tr>
                 </thead>
@@ -26,6 +27,7 @@
                         <tr>
                             <td><?= $item['id'] ?></td>
                             <td><?= $item['amount'] ?></td>
+                            <td><?= $item['order_date'] ?></td>
                             <td>
                                 <a href="index.php?ctrl=buyOrder&action=get&id=<?= $item['id'] ?>" aria-label="Ver mais"
                                    alt="Ver mais">

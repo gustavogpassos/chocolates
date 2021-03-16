@@ -1,5 +1,7 @@
 <?php
 
+
+
 require_once SERVER_ROOT . 'lib/connection.php';
 
 class ProductModel extends Connection
@@ -43,9 +45,9 @@ class ProductModel extends Connection
      * ou retorna boolean se não encontrar
      */
     public function searchProduct ($search){
-        $select = "select * from adm_product where sku like :search'%' or name like '%':search'%'";
-        $query = $this->db->prepare($select);
-        $query->execute(array('search'=>$search));
+        $select = "select * from adm_product where sku like '%$search%' or name like '%$search%'";
+        //$query = $this->db->prepare($select);
+        $query = $this->db->query($select);
         if(is_bool($query)){
             return $query->errorInfo();
         }else{

@@ -18,6 +18,7 @@ require SERVER_ROOT . 'lib/adminController.php';
     <link rel="stylesheet" href="./resources/css/custom.css">
 
     <script src="./resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/custom.js"></script>
 
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
@@ -26,30 +27,32 @@ require SERVER_ROOT . 'lib/adminController.php';
 </head>
 <body>
 <header>
-    <div class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="index.php" class="navbar-brand">Chocolates</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="index.php?ctrl=product" class="nav-link">Produtos</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.php?ctrl=client" class="nav-link">Clientes</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.php?ctrl=buyOrder" class="nav-link">Pedido de compra</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.php?ctrl=sellOrder" class="nav-link">Pedido de venda</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="index.php" class="navbar-brand">Chocolates</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbar" aria-controls="navbar"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="index.php?ctrl=product" class="nav-link">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.php?ctrl=client" class="nav-link">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.php?ctrl=buyOrder" class="nav-link">Pedido de compra</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.php?ctrl=sellOrder" class="nav-link">Pedido de venda</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
 </header>
 <section>
     <div class="container">
@@ -80,24 +83,25 @@ require SERVER_ROOT . 'lib/adminController.php';
     </div>
 </section>
 
+
 <script type="text/javascript">
-    $(document).ready(function(){
-       $('#table').DataTable({
-           "language": {
-               "lengthMenu": "",
-               "zeroRecords": "Nenhum resultado encontrado.",
-               "info": "",
-               "infoEmpty": "",
-               "infoFiltered": "",
-               "search": "Pesquisar",
-               "paginate": {
-                   "first": "Primeiro",
-                   "last": "Ultimo",
-                   "next": "Próximo",
-                   "previous": "Anterior"
-               }
-           }
-       });
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "language": {
+                "lengthMenu": "",
+                "zeroRecords": "Nenhum resultado encontrado.",
+                "info": "",
+                "infoEmpty": "",
+                "infoFiltered": "",
+                "search": "Pesquisar",
+                "paginate": {
+                    "first": "Primeiro",
+                    "last": "Ultimo",
+                    "next": "Próximo",
+                    "previous": "Anterior"
+                }
+            }
+        });
     });
 </script>
 

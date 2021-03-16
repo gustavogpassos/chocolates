@@ -61,11 +61,17 @@ class Product
      * função para pesquisar um produto pelo nome ou código
      */
     public function search(){
-        $search = $_POST;
+        $search = $_POST['data'];
+        print_r($search);
 
         $result = $this->productModel->searchProduct($search);
-        if(is_bool($result)){
-            echo "Nenhum resultado";
+
+        $r = $result;
+
+        print_r($r);
+        if(count($result)<1){
+            $msg = "Nenhum resultado";
+            return $msg;
         }else{
             return $result;
         }
