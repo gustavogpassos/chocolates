@@ -17,7 +17,7 @@ $today = date('Y-m-d');
                         <?php echo isset($data) ? 'value="' . $data['order_date'] . '" disabled' : 'value="' . $today . '" disabled' ?>
                            required>
                 </div>
-                <div class="mb-3">
+                <div class="mb-lg-5">
                     <h4>Produtos</h4>
 
                     <?php
@@ -36,9 +36,16 @@ $today = date('Y-m-d');
                             </div>
                         <?php }
                     } else { ?>
-                        <input type="text" name="product" id="product" class="form-control"
-                               placeholder="Digite o código ou nome do produto" onkeyup="searchProduct(this.value)"/>
-                        <div id="livesearch"></div>
+                        <div class="form-inline">
+                            <input type="text" name="product" id="product" class="form-control"
+                                   placeholder="Digite o código ou nome do produto"
+                                   onkeyup="searchProduct(this.value)"/>
+                            <input type="number" name="quantity" id="quantity" class="form-control"
+                                   placeholder="Quantidade">
+                            <button type="button" class="btn btn-info">Adicionar</button>
+                            <div id="livesearch"></div>
+                        </div>
+
                         <br/>
                         <div class="mb-3">
                             <table class="table" id="products">
@@ -46,7 +53,7 @@ $today = date('Y-m-d');
                                 <td>SKU</td>
                                 <td>Nome</td>
                                 </thead>
-                                <tbody>
+                                <tbody id="prod-tbody">
 
                                 </tbody>
                             </table>

@@ -14,4 +14,13 @@ section {
 
 #products {
     padding: 10px;
+    display: block;
+}
+
+#products ul li:hover {
+
+}
+
+ul {
+    list-style: unset;
 }

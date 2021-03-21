@@ -1,56 +1,75 @@
-function searchProduct(data) {
-    console.log(data);
+var searched = 0;
+
+
+function addProduct(n) {
+    //alert("it's okay");
+
+    console.log(n);
 
     document.getElementById("livesearch").innerHTML = "";
-    document.getElementById("livesearch").style.border = "0px";
+    document.getElementById("product").value = "";
 
-    /*
-    if (data.length == 0) {
-        document.getElementById("livesearch").innerHTML = "";
-        document.getElementById("livesearch").style.border = "0px";
-        return;
+    var tbody = document.getElementById("prod-tbody");
+
+    var tr = document.createElement('tr');
+
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+
+    td1.innerHTML=n.sku;
+    td2.innerHTML=n.name;
+
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+
+    tbody.appendChild(tr);
+
+
+
+}
+
+
+function searchProduct(data) {
+    var elements = null;
+
+    var livesearch = document.getElementById("livesearch");
+
+
+    livesearch.innerHTML = "";
+    livesearch.style.border = "0px";
+
+
+    if (data.length > 0 && searched == 0) {
+
+        $.ajax({
+            method: "POST",
+            url: "productSearch.php",
+            data: {data},
+            success: function (response) {
+
+                elements = JSON.parse(response);
+
+                $.map(elements, function (n, i) {
+
+                    var b = document.createElement("button");
+                    var label = n.sku + ' - ' + n.name;
+                    b.innerHTML = label;
+                    b.setAttribute('class', 'list-group-item list-group-item-action');
+                    b.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        searched = 1;
+                        document.getElementById("product").value = label;
+                        livesearch.innerHTML = "";
+                    });
+                    livesearch.appendChild(b);
+                });
+                //d.style.border = "1px solid #A5ACB2";
+            }
+        });
+    } else {
+        data = null;
+        elements = null;
+        livesearch.innerHTML = "";
+        livesearch.style.border = "0px";
     }
-*/
-    $.ajax({
-        method: "POST",
-        url: "productSearch.php",
-        data: {data},
-        success: function (response) {
-            //console.log(response);
-
-            var elements = JSON.parse(response);
-
-            var html;
-            //console.log(elements);
-
-            var d = document.getElementById("livesearch");
-
-            $.map(elements, function (n, i) {
-                console.log(n);
-                var p = document.createElement("p");
-                p.innerHTML = n.sku + ' - ' + n.name;
-                p.style.padding = "5px";
-                d.appendChild(p);
-                d.style.border="1px solid #A5ACB2";
-            });
-        }
-    });
-
-    /*
-    var xmlhttp=new XMLHttpRequest();
-
-
-
-    xmlhttp.onreadystatechange=function() {
-        if (this.readyState===4 && this.status===200) {
-            //console.log(this.responseText);
-            document.getElementById("livesearch").innerHTML=this.responseText;
-            document.getElementById("livesearch")
-        }
-    }
-
-    xmlhttp.open("GET","index.php?ctrl=product&action=search&q="+data,true);
-    xmlhttp.send();
-
-*/
 }
